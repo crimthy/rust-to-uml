@@ -1,0 +1,3 @@
+find -iname "*.rs" > ./rust-files
+ctags -f project-tags --fields=+latinK -L ./rust-files
+rm ./rust-files
