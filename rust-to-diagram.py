@@ -25,7 +25,7 @@ def parse_tags_file(file_path):
 lines = parse_tags_file(options.tags_file)
 
 def clear_signature(signature):
-    signature = signature.replace('{$',')').replace('$/;',')')
+    signature = signature.replace('{$','').replace('$/;','')
     if signature[-1] == '$':
         signature = signature.replace(signature[len(signature)-1], ')') if signature[-2] == '(' else signature[:-1]
     signature = signature.translate({ord(c): f"\{c}" for c in "!@#$%^&*()[]{};:,./<>?\|`~-=_+"})
