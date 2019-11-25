@@ -109,9 +109,10 @@ class GraphsHandler:
             #fields
             fields = [f for f in impl_fields if not f.is_method()]
             impl.fields.extend(fields)
+            # links ??
         
         self.target_graphs.extend(implementations)
-
+        # struct ??
 
     def draw(self):
         s = Digraph('struct', filename=f"{options.out}.gv", node_attr={'shape': 'record'}, engine='dot', format='svg', strict=True)
@@ -126,9 +127,11 @@ class GraphsHandler:
     def __format_label(self, graph):
         label = "{"
         label += f"{graph.header}|"
+        label += "\<\<fields\>\>\:\\n" if len(graph.fields) > 0 else ""
         for f in graph.fields:
             label += f"{f.signature}\\n"
         label += "|" if len(graph.fields) > 0 else ""
+        label += "\<\<methods\>\>\:\\n" if len(graph.methods) > 0 else ""
         for m in graph.methods:
             label += f"{m.signature}\\n"
         label += "}"
