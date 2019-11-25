@@ -1,3 +1,10 @@
+OUT_TAGS=$1
+
+if [ -z "$OUT_TAGS" ]
+then
+    OUT_TAGS="rust-project-tags"
+fi
+
 find -iname "*.rs" > ./rust-files
-ctags -f project-tags --fields=+latinK -L ./rust-files
+ctags -f $OUT_TAGS --fields=+latinK -L ./rust-files
 rm ./rust-files
